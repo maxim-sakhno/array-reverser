@@ -7,7 +7,3 @@ target
 # Build:
 *.class
 *.jar
-
-
-# Test:
-#src/main/test/java/

@@ -14,25 +14,36 @@ import java.io.PrintStream;
 public class ArrayPrinterTest {
 
 
-    private final Integer[] INTEGER_ARRAY = new Integer[] {1, 2, 3};
-    private ArrayContainer<Integer> integerArrayContainer;
-    private ArrayPrinter arrayPrinter;
     private ByteArrayOutputStream out;
+    private ArrayPrinter arrayPrinter;
 
 
     @Before
     public void setUp() {
-        integerArrayContainer = new ArrayContainer<Integer>(INTEGER_ARRAY);
-        arrayPrinter = new ArrayPrinter();
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
+        arrayPrinter = new ArrayPrinter();
     }
 
 
     @Test
-    public void testPrintArray01() {
-        arrayPrinter.printArray(integerArrayContainer);
+    public void testArrayPrinter01() {
+        arrayPrinter.printArray(new ArrayContainer<Short>(new Short[] {}));
+        Assert.assertEquals("\n", getOut());
+    }
+
+
+    @Test
+    public void testArrayPrinter02() {
+        arrayPrinter.printArray(new ArrayContainer<Long>(new Long[] {1L, 2L ,3L}));
         Assert.assertEquals("1 2 3 \n", getOut());
+    }
+
+
+    @Test
+    public void testArrayPrinter03() {
+        arrayPrinter.printArray(new ArrayContainer<Character>(new Character[] {'a', 'b', 'c'}));
+        Assert.assertEquals("a b c \n", getOut());
     }
 
 

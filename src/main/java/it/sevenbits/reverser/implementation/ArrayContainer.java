@@ -14,11 +14,6 @@ public class ArrayContainer<T> implements IArrayContainer<T> {
     private T[] array;
 
 
-    private ArrayContainer() {
-
-    }
-
-
     /**
      * Constructor.
      * @param array initial array.

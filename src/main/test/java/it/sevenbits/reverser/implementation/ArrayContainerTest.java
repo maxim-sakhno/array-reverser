@@ -1,7 +1,6 @@
 package it.sevenbits.reverser.implementation;
 
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -12,19 +11,38 @@ import org.junit.Assert;
 public class ArrayContainerTest {
 
 
-    private final Integer[] INTEGER_ARRAY = new Integer[] {1, 2, 3};
-    private ArrayContainer<Integer> integerArrayContainer;
+    @Test (expected = IllegalArgumentException.class)
+    public void testArrayContainer01() {
+        new ArrayContainer<Integer>(new Integer[] {1, 2, 3}).setArray(null);
+    }
 
 
-    @Before
-    public void setUp() {
-        integerArrayContainer = new ArrayContainer<Integer>(INTEGER_ARRAY);
+    @Test
+    public void testArrayContainer02() {
+        ArrayContainer<Double> doubleArrayContainer = new ArrayContainer<Double>(new Double[] {1.1, 2.2, 3.3});
+        doubleArrayContainer.setArray(new Double[] {4.4, 5.5, 6.6});
+        Assert.assertArrayEquals(new Double[] {4.4, 5.5, 6.6}, doubleArrayContainer.getArray());
+    }
+
+
+    @Test
+    public void testArrayContainer03() {
+        ArrayContainer<String> stringArrayContainer = new ArrayContainer<String>(new String[] {"aaa", "bbb", "ccc"});
+        stringArrayContainer.setArray(new String[] {});
+        Assert.assertArrayEquals(new String[] {}, stringArrayContainer.getArray());
     }
 
 
     @Test (expected = IllegalArgumentException.class)
-    public void testSetArray01() {
-        integerArrayContainer.setArray(null);
+    public void testArrayContainer04() {
+        new ArrayContainer<Boolean>(null);
+    }
+
+
+    @Test
+    public void testArrayContainer05() {
+        ArrayContainer<Byte> byteArrayContainer = new ArrayContainer<Byte>(new Byte[] {1, 2, 3});
+        Assert.assertArrayEquals(new Byte[] {1, 2, 3}, byteArrayContainer.getArray());
     }
 
 

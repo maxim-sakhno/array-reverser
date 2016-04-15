@@ -12,33 +12,36 @@ import org.junit.Assert;
 public class ArrayReverserTest {
 
 
-    private final Integer[] INTEGER_ARRAY = new Integer[] {1, 2, 3};
-    private final Integer[] REVERSED_INTEGER_ARRAY = new Integer[] {3, 2, 1};
-    private final Integer[] EMPTY_INTEGER_ARRAY = new Integer[0];
-    private ArrayContainer<Integer> integerArrayContainer;
-    private ArrayContainer<Integer> emptyIntegerArrayContainer;
     private ArrayReverser arrayReverser;
 
 
     @Before
     public void setUp() {
-        integerArrayContainer = new ArrayContainer<Integer>(INTEGER_ARRAY);
-        emptyIntegerArrayContainer = new ArrayContainer<Integer>(EMPTY_INTEGER_ARRAY);
         arrayReverser = new ArrayReverser();
     }
 
 
     @Test
-    public void testReverseArray01() {
-        arrayReverser.reverseArray(integerArrayContainer);
-        Assert.assertArrayEquals(REVERSED_INTEGER_ARRAY, integerArrayContainer.getArray());
+    public void testArrayReverser01() {
+        ArrayContainer<Float> floatArrayContainer = new ArrayContainer<Float>(new Float[] {1.2F, 2.3F, 4.5F});
+        arrayReverser.reverseArray(floatArrayContainer);
+        Assert.assertArrayEquals(new Float[] {4.5F, 2.3F, 1.2F}, floatArrayContainer.getArray());
     }
 
 
     @Test
-    public void testReverseArray02() {
-        arrayReverser.reverseArray(emptyIntegerArrayContainer);
-        Assert.assertArrayEquals(EMPTY_INTEGER_ARRAY, emptyIntegerArrayContainer.getArray());
+    public void testArrayReverser02() {
+        ArrayContainer<String> stringArrayContainer = new ArrayContainer<String>(new String[0]);
+        arrayReverser.reverseArray(stringArrayContainer);
+        Assert.assertArrayEquals(new String[0], stringArrayContainer.getArray());
+    }
+
+
+    @Test
+    public void testArrayReverser03() {
+        ArrayContainer<Integer> integerArrayContainer = new ArrayContainer<Integer>(new Integer[] {1, 2, 1});
+        arrayReverser.reverseArray(integerArrayContainer);
+        Assert.assertArrayEquals(new Integer[] {1, 2, 1}, integerArrayContainer.getArray());
     }
 
 
