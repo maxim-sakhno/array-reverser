@@ -1,9 +1,13 @@
-#Specific thing for Intellij IDEA:
+# Specific thing for Intellij IDEA:
 .idea
 target
 *iml
 
 
-#Build:
+# Build:
 *.class
 *.jar
+
+
+# Test:
+#src/main/test/java/
